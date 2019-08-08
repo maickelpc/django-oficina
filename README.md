@@ -46,13 +46,14 @@ python manage.py runserver<br><br>
 Para usar base de dados postgres:
 <ul>
   <li>instale a biblioteca: pip install psycopg2-binary</li>
-  <li>Configure a conexão em settings: <p>'default': {
+  <li>Configure a conexão em settings: <br><p>'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'nomedabase',
         'USER': 'usuario',
         'PASSWORD': 'senha',
         'HOST': '127.0.0.1',
-        'PORT': '5432',  # 8000 is default
+        'PORT': '5432',
+    }
 </p> </li>
 </ul>
 
