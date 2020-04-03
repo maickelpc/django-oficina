@@ -65,6 +65,47 @@ python manage.py makemigrations // para criar migracoes para atualizar o banco c
 python manage.py migrate // para atualizar o banco, conforme as migrations disponiveis
 python manage.py runserver // para rodar o projeto
 
+<h2>Publicação no Apache </h2>
+
+<VirtualHost *:80>
+        ServerName dominio.com
+        ServerAlias subdominio.dominio.com
+        ServerAdmin mwebmaster@dominio.com
+        DocumentRoot <raiz_app>
+        WSGIPassAuthorization On
+
+
+        WSGIScriptAlias / /<raiz_do_projeto>/<aplicacao>/wsgi.py
+        <directory "/<raiz_do_projeto>">
+                <Files wsgi.py>
+                #Require all granted
+                        Order deny,allow
+                        Allow from all
+                </Files>
+        </Directory>
+
+        Alias /media/ /<raiz_do_projeto>/media/
+        <directory "/<raiz_do_projeto>/media/">
+                #Require all granted
+                Order allow,deny
+                Allow from all
+        </directory>
+
+        Alias /static/ /<raiz_do_projeto>/static/
+        <directory "/<raiz_do_projeto>/static/">
+                #Require all granted
+                Order deny,allow
+                Allow from all
+        </directory>
+
+        WSGIDaemonProcess subdominio.dominio.com python-home=/<<raiz_do_projeto>>/venv python-path=<raiz_do_projeto>
+        WSGIProcessGroup <identificador>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
 <h2>Documentação / Cursos e outros recursos</h2>
 <ul>
   <li>Documentação do Django: https://www.djangoproject.com/</li>
