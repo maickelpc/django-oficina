@@ -38,7 +38,10 @@ Com isso, já pode acessar o terminal e ativar o ambiente, isntalar os requisito
 Com a (venv) ativada e os requisitos (django e django-suit) instalados, criamos o banco de dados e um novo super usuario, e inicia o servidor:<br>
 python manage.py migrate<br>
 python manage.py createsuperuser<br>
-python manage.py runserver<br><br>
+python manage.py runserver<br>
+pip install https://github.com/darklow/django-suit/tarball/v2
+
+<br><br>
 
 
 
